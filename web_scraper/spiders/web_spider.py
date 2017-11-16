@@ -13,7 +13,7 @@ class WebSpider(scrapy.Spider):
     start_urls = [
         "http://cufa.net",
         "http://concordia.ca"
-                  ]
+        ]
 
     # The parse function will be implicitly called after response from the site
     def parse(self, response):
@@ -33,5 +33,9 @@ class WebSpider(scrapy.Spider):
         l = ItemLoader(item=WebScrapingItem(), response=response)
         l.add_value('name', response.url)
         l.add_value('content', parsed_text_list)
-        return l.load_item()
+
+        yield l.load_item()
+
+        for href in response.css('a::attr(href)'):
+            yield response.follow(href, callback=self.parse)
 
