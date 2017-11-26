@@ -45,7 +45,7 @@ class Index:
         if term in self.dictionary:
             self.dictionary[term].addDoc(docId)
         else:
-            sor = 0;
+            sor = 0
             if term.lower() in self.score:
                 sor = self.score[term.lower()]
             termInfo = TermInfo(sor)
@@ -56,7 +56,7 @@ class Index:
         if term in self.dictionary:
             return self.dictionary[term].semVaule
         else:
-            return None
+            return 0
 
     def getDocFreq(self, term, docID):
         if term in self.dictionary:

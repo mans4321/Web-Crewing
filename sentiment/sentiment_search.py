@@ -20,10 +20,7 @@ def get_query_sentiment(inverted_index, words):
 
     # iterate through tokens in query
     for token in words:
-        if token not in index:
-            continue
-        # possibly index[token][TermInfo][semValue] - needs testing with real json file
-        sentiment_score += index[token][semValue]
+        sentiment_score += inverted_index.getSentiment(token)
 
     return sentiment_score
 
@@ -43,6 +40,8 @@ def get_document_sentiment(inverted_index, document_content):
 
 index = get_index()
 print(index.getDocFreq('jmsb','http://cufa.net'))
+
+print(get_query_sentiment(index, ['active', 'sup']))
 
 # with open('tokenized_docs.json') as doc_file:
 #     tokenized_docs = json.load(doc_file)
