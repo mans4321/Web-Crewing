@@ -6,7 +6,7 @@ from index import get_index
 def get_docs_containing_word(inverted_index, words):
     result = []
     for word in words:
-        word_indexes = inverted_index[word][docDict]
+        word_indexes = inverted_index.get_doc_list(word)
         for idx in word_indexes:
             if idx not in result:
                 result.append(idx)
@@ -39,9 +39,10 @@ def get_document_sentiment(inverted_index, document_content):
 
 
 index = get_index()
-print(index.getDocFreq('jmsb','http://cufa.net'))
+#print(index.getDocFreq('jmsb','http://cufa.net'))
 
 print(get_query_sentiment(index, ['active', 'sup']))
+print(get_docs_containing_word(index, ['jmsb', 'active']))
 
 # with open('tokenized_docs.json') as doc_file:
 #     tokenized_docs = json.load(doc_file)

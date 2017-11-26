@@ -70,6 +70,13 @@ class Index:
         else:
             return None
 
+    def get_doc_list(self, term):
+        results = []
+        if term in self.dictionary:
+            for key in self.dictionary[term].docDict:
+                results.append(key)
+        return results
+
     def getdictionary(self):
         return self.dictionary
 
