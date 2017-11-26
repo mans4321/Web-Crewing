@@ -1,3 +1,4 @@
+import json
 
 from token_class import Token
 from normalization import normalize
@@ -6,8 +7,7 @@ from normalization import normalize
 def get_token_stream():
     tokenList = list()  # stream of Token objects(term and docId)
     fileRead = open_file('items.jl')
-    documentList = fileRead.split('\n')
-    for doc in documentList:
+    for doc in fileRead:
         if doc.strip() == "":
             break
         docTermList = parse_doc(doc)
@@ -24,10 +24,9 @@ def open_file(filename):
 def parse_doc(doc):
     print(doc)
     term_list = []
-    doc = doc.strip()[1:-1]
-    doclis = doc.split('"name":')[1].split(', "content": ')
-    docID = doclis[0].strip()[2:-2]
-    docContent = doclis[1].strip()[1:-1].split(",")
+    doc = json.loads(doc)
+    docID = doc['name'][0]
+    docContent = doc['content']
     for sentence in docContent:
         sentence = sentence.replace('"', '')
         break_sentence = sentence.split()

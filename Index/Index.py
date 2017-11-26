@@ -81,7 +81,7 @@ class Index:
                 self.dictionary[k]= index.getdictionary()[k]
 
 
-def storyIndex(fileName, indexObj):
+def storeIndex(fileName, indexObj):
     file = open(fileName, 'w')
     for k in indexObj.getdictionary():
         termInf = indexObj.getdictionary()[k]

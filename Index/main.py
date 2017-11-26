@@ -1,7 +1,7 @@
 from token_stream import get_token_stream
 from spimi import spimi_invert
 from spimi import merge_postings
-from Index import storyIndex
+from Index import storeIndex
 from Index import readIndex
 
 
@@ -28,13 +28,13 @@ def indexation():
     print(escape_layout)
     print("Merging Postings")
     index = merge_postings(file_name_list, score)
-    storyIndex("loadIndex.js", index)
+    storeIndex("loadIndex.json", index)
     print("Postings Merged")
     print(escape_layout)
 
 
 def dictFromSentimentFile():
-    file = open("AFINN-111.txt", 'r')
+    file = open("Index/AFINN-111.txt", 'r')
     scores = {}
     for line in file:
         term, score = line.split('\t')
@@ -47,7 +47,7 @@ def dictFromSentimentFile():
 def getIndex():
     indexation()
     score = dictFromSentimentFile()
-    index = readIndex("loadIndex.js",score)
+    index = readIndex("loadIndex.json",score)
     return index
 
 index = getIndex()
