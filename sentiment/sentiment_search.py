@@ -31,9 +31,7 @@ def get_document_sentiment(inverted_index, document_content):
     doc_words = document_content.split()
 
     for word in doc_words:
-        if word not in index:
-            continue
-        sentiment_score += index[token][semValue]
+        sentiment_score += inverted_index.getSentiment(word)
 
     return sentiment_score
 
