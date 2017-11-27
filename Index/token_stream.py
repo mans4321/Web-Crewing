@@ -10,7 +10,7 @@ import json
 def get_token_stream():
 	tokenList = list()	# stream of Token objects(term and docId)
 	doc_len_arr = []
-	fileRead = open_file('items.jl')
+	fileRead = open_file('../items.jl')
 	documentList = create_parsed_text(fileRead)
 	for doc in documentList:
 		if doc.strip() == "":

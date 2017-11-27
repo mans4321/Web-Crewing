@@ -30,7 +30,7 @@ class WebSpider(scrapy.Spider):
                 text = text.strip()
                 # Will only keep values that are not empty. The @media check is to remove some css that got extracted
                 if(text != "" and "@media" not in text and "display:" not in text and "@font-face" not in text
-                   and 'position:' not in text):
+                   and 'position:' not in text and "\u200b" not in text):
                     parsed_text_list.append(text)
             if len(parsed_text_list) == 0:
                 parsed_text_list.append("")

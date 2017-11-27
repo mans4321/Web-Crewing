@@ -29,10 +29,11 @@ def get_query_sentiment(inverted_index, words):
 # function calculates the total sentiment of the document
 def get_document_sentiment(inverted_index, document_content):
 	sentiment_score = 0
-	doc_words = document_content.split()
-	
-	for word in doc_words:
-		sentiment_score += inverted_index.getSentiment(word)
+	if document_content != None:
+		doc_words = document_content.split()
+
+		for word in doc_words:
+			sentiment_score += inverted_index.getSentiment(word)
 	return sentiment_score
 
 
