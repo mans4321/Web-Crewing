@@ -34,6 +34,7 @@ def get_document_sentiment(inverted_index, document_content):
 
 	for word in doc_words:
 		sentiment_score += inverted_index.getSentiment(word)
+		#print(word + ":" + str(inverted_index.getSentiment(word)))
 
 	return sentiment_score
 
@@ -72,7 +73,7 @@ index = get_index()
 #	  else:
 #		  print('Thank you. Have a nice day')
 #		  continue_queries = False
-print(get_query_sentiment(index, ['active', 'sup']))
+print("total query sentiment: " + str(get_query_sentiment(index, ['miss', 'support', 'from', 'agreement'])))
 print(get_docs_containing_word(index, ['jmsb', 'active']))
 
 with open("../Index/tokenized_docs.txt", "r") as f:
@@ -84,7 +85,6 @@ with open("../Index/tokenized_docs.txt", "r") as f:
 			continue
 
 		if "<>" in line and start_seen:
-			_,value = line.split('<>')
+			value = line
 			break
-
-print(get_document_sentiment(index, value))
+print("total doc sentiment: " + str(get_document_sentiment(index, value)))

@@ -20,7 +20,7 @@ def get_token_stream():
 		tokenList.extend(listofTokens)
 		fileOutput = " ".join(docTermList)
 		file = open("tokenized_docs.txt", "a+")
-		file.write(docID + "\n" + fileOutput + "<>\n\n")
+		file.write(docID + "\n" + fileOutput + "<>\n")
 		file.close()
 	return tokenList
 
