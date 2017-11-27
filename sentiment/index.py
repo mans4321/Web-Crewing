@@ -121,7 +121,7 @@ def readIndex(filename, score):
     return index
 
 def dictFromSentimentFile():
-    file = open("Index/AFINN-111.txt", 'r')
+    file = open("../Index/AFINN-111.txt", 'r')
     scores = {}
     for line in file:
         term, score = line.split('\t')
@@ -133,5 +133,5 @@ def dictFromSentimentFile():
 
 def get_index():
     score = dictFromSentimentFile()
-    index = readIndex("loadIndex.json",score)
+    index = readIndex("../Index/loadIndex.json",score)
     return index

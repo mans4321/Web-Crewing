@@ -15,7 +15,7 @@ def spimi_invert(token_stream, block_size, file_number, score):
         index.addTerm(token.term, token.docid)
 
     sorted_dict = sorted(index.getdictionary().keys(), key=operator.itemgetter(0))
-    filename = 'Index/mergeIndex/file' + str(file_number) + '.json'
+    filename = 'mergeIndex/file' + str(file_number) + '.json'
     save_dict(filename, sorted_dict, index.getdictionary())
     print(sorted_dict)
     return filename

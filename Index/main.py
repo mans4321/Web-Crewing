@@ -34,7 +34,7 @@ def indexation():
 
 
 def dictFromSentimentFile():
-    file = open("Index/AFINN-111.txt", 'r')
+    file = open("AFINN-111.txt", 'r')
     scores = {}
     for line in file:
         term, score = line.split('\t')
